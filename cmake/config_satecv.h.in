@@ -1,0 +1,9 @@
+#ifndef CONFIG_H_IN
+#define CONFIG_H_IN
+
+#define FILE_LOG "@FILE_LOG@"
+#define FORMAT_LOG "@FORMAT_LOG@"
+#define LEVEL_LOG @LEVEL_LOG@
+
+
+#endif // CONFIG_H_IN
