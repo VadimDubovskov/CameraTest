@@ -8,6 +8,7 @@
 #include <opencv2/core/mat.hpp>
 
 #include "satecameracontrol.h"
+#include <thread>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

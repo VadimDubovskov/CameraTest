@@ -1,6 +1,10 @@
 #ifndef SATECAMERACONTROL_H
 #define SATECAMERACONTROL_H
 
+// spdlog
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/rotating_file_sink.h"
+
 #include "satecvdatatypes.h"
 // MVC
 #include "MVS/CameraParams.h"
@@ -10,10 +14,7 @@
 //
 #include <memory>
 #include <optional>
-
-namespace spdlog {
-    class logger;
-}
+#include <vector>
 
 namespace cv {
     class Mat;

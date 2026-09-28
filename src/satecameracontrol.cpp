@@ -5,10 +5,6 @@
 // OpenCV
 #include <opencv2/opencv.hpp>
 
-// spdlog
-#include "spdlog/spdlog.h"
-#include "spdlog/sinks/rotating_file_sink.h"
-
 #if defined (_WIN32)|| defined(_WIN64)|| defined(__WIN32__) || defined(__WINDOWS__)
 #include <Windows.h>
 #include <process.h>

@@ -15,7 +15,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 include(FetchContent)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Core Widgets)
 # OpenCV
 find_package(OpenCV REQUIRED)
 message(STATUS " version: ${OpenCV_VERSION}")
@@ -66,9 +66,9 @@ include_directories(
 
 # Logger settings
 if(LINUX)
-    set(FILE_LOG "/var/${LIBRARY_NAME}/camera_log.txt")
+    set(FILE_LOG "logs/log.txt")
 else()
-    set(FILE_LOG "logs/camera_log.txt")
+    set(FILE_LOG "logs/log.txt")
 endif()
 set(FORMAT_LOG "[%Y-%m-%d  %H:%M:%S.%e] [%l] [thread %t] %v")
 # Logger level
