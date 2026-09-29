@@ -103,23 +103,20 @@ else()
     )
 endif()
 
-include(GNUInstallDirs)
-
-install(TARGETS CameraTest
-    BUNDLE  DESTINATION .
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-)
-
-#qt_generate_deploy_app_script(
-#    TARGET CameraTest
-#    OUTPUT_SCRIPT deploy_script
-#    NO_UNSUPPORTED_PLATFORM_ERROR
-#)
-#install(SCRIPT ${deploy_script})
-
 ## --------------------- Install pipeline ---------------------
 if(LINUX)
+    include(GNUInstallDirs)
+
+    # Install path
+    set(INSTALL_BIN_DIR "/opt/${PROJECT_NAME}")
+    set(INSTALL_INCLUDE_DIR "/opt/${PROJECT_NAME}/include")
+    set(INSTALL_LIB_DIR "/opt/${PROJECT_NAME}/lib")
+    set(INSTALL_DOC_DIR "/opt/${PROJECT_NAME}/doc")
+    # RPATH
+    set(CMAKE_INSTALL_RPATH "${INSTALL_LIB_DIR};/usr/local/lib;")
+    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+    set(BUILD_WITH_INSTALL_RPATH TRUE)
+
     # Specify where header and built files should be copied
     install(TARGETS CameraTest
         LIBRARY DESTINATION ${INSTALL_LIB_DIR}
@@ -142,16 +139,6 @@ if(LINUX)
 
     add_definitions("-DSATELoader_LIB_VERSION=\"${LIBRARY_VERSION}\"")
     add_definitions("-DSATELoader_VERSION=\"${LIBRARY_VERSION}\"")
-
-    # Install path
-    set(INSTALL_BIN_DIR "/opt/${PROJECT_NAME}")
-    set(INSTALL_INCLUDE_DIR "/opt/${PROJECT_NAME}/include")
-    set(INSTALL_LIB_DIR "/opt/${PROJECT_NAME}/lib")
-    set(INSTALL_DOC_DIR "/opt/${PROJECT_NAME}/doc")
-    # RPATH
-    set(CMAKE_INSTALL_RPATH "${INSTALL_LIB_DIR};/usr/local/lib;")
-    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-    set(BUILD_WITH_INSTALL_RPATH TRUE)
 
     # CPACK
     SET(CPACK_GENERATOR "DEB")
