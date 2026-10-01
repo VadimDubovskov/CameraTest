@@ -13,6 +13,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+if(LINUX)
+    # Install path
+    set(INSTALL_BIN_DIR "/opt/${PROJECT_NAME}")
+    set(INSTALL_INCLUDE_DIR "/opt/${PROJECT_NAME}/include")
+    set(INSTALL_LIB_DIR "/opt/${PROJECT_NAME}/lib")
+    set(INSTALL_DOC_DIR "/opt/${PROJECT_NAME}/doc")
+    # RPATH
+    set(CMAKE_INSTALL_RPATH "${INSTALL_LIB_DIR};/usr/local/lib;")
+    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+    set(BUILD_WITH_INSTALL_RPATH TRUE)
+endif()
+
 include(FetchContent)
 
 find_package(Qt6 6.4 REQUIRED COMPONENTS Core Widgets)
@@ -106,17 +118,6 @@ endif()
 ## --------------------- Install pipeline ---------------------
 if(LINUX)
     include(GNUInstallDirs)
-
-    # Install path
-    set(INSTALL_BIN_DIR "/opt/${PROJECT_NAME}")
-    set(INSTALL_INCLUDE_DIR "/opt/${PROJECT_NAME}/include")
-    set(INSTALL_LIB_DIR "/opt/${PROJECT_NAME}/lib")
-    set(INSTALL_DOC_DIR "/opt/${PROJECT_NAME}/doc")
-    # RPATH
-    set(CMAKE_INSTALL_RPATH "${INSTALL_LIB_DIR};/usr/local/lib;")
-    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-    set(BUILD_WITH_INSTALL_RPATH TRUE)
-
     # Specify where header and built files should be copied
     install(TARGETS CameraTest
         LIBRARY DESTINATION ${INSTALL_LIB_DIR}
