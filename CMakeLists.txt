@@ -122,7 +122,20 @@ if(LINUX)
         LIBRARY DESTINATION ${INSTALL_LIB_DIR}
         NAMELINK_SKIP
         RUNTIME DESTINATION ${INSTALL_BIN_DIR}
-        COMPONENT Runtime)
+        COMPONENT Runtime
+        PERMISSIONS
+                    OWNER_READ OWNER_WRITE OWNER_EXECUTE
+                    GROUP_READ GROUP_WRITE GROUP_EXECUTE
+                    WORLD_READ WORLD_WRITE WORLD_EXECUTE
+    )
+    # OpenCV
+    install(FILES
+        /usr/local/lib/libopencv_imgproc.so.4.13.0
+        DESTINATION ${INSTALL_LIB_DIR} RENAME libopencv_imgproc.so.413)
+    install(FILES
+        /usr/local/lib/libopencv_core.so.4.13.0
+        DESTINATION ${INSTALL_LIB_DIR} RENAME libopencv_core.so.413)
+
 elseif (WIN32)
     include(DeployQt)
     windeployqt(CameraTest ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ${PROJECT_SOURCES}/resources)
