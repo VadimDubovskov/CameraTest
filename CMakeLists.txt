@@ -6,7 +6,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 # configure version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 0)
+set(VERSION_PATCH 3)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -78,7 +78,7 @@ include_directories(
 
 # Logger settings
 if(LINUX)
-    set(FILE_LOG "logs/log.txt")
+    set(FILE_LOG "/var/CameraTest/log.txt")
 else()
     set(FILE_LOG "logs/log.txt")
 endif()
